@@ -10,7 +10,7 @@ class lowongan extends REST_Controller
   function __construct()
   {
     parent::__construct();
-		$this->load->model('lowonganM');
+		$this->load->model('LowonganM');
   }
   function lowongan_post(){
     $data = array(
@@ -34,22 +34,22 @@ class lowongan extends REST_Controller
     if (empty($id)) {
       $data['tgl_insert']= date('Y-m-d H:i:s');
       $data['tgl_update']= date('Y-m-d H:i:s');
-      $return=$this->lowonganM->registerLowongan($data);
+      $return=$this->LowonganM->registerLowongan($data);
     }else{
       $data['tgl_update']= date('Y-m-d H:i:s');
-      $return=$this->lowonganM->updateLowongan($data,$id);
+      $return=$this->LowonganM->updateLowongan($data,$id);
     }
 
-    $this->set_response($return);
+    $this->set_response($return,REST_Controller::HTTP_OK);
   }
   function lowongan_get(){
     $id=$this->get('idloker');
     if (empty($id)) {
-      $return=$this->lowonganM->getListLowongan();
+      $return=$this->LowonganM->getListLowongan();
     }else{
-      $return=$this->lowonganM->getLowongan($id);
+      $return=$this->LowonganM->getLowongan($id);
     }
-    $this->set_response($return);
+    $this->set_response($return,REST_Controller::HTTP_OK);
   }
 
 }

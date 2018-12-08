@@ -2,7 +2,7 @@
 /**
  *
  */
-class lowonganM extends CI_Model
+class LowonganM extends CI_Model
 {
   function registerLowongan($data)
   {

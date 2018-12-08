@@ -10,7 +10,7 @@ class perusahaan extends REST_Controller
   function __construct()
   {
     parent::__construct();
-		$this->load->model('perusahaanM');
+		$this->load->model('PerusahaanM');
   }
   function perusahaan_post(){
     $data = array(
@@ -27,25 +27,25 @@ class perusahaan extends REST_Controller
 
     if (empty($id)) {
       $data['tgl_daftar']= date('Y-m-d H:i:s');
-      $return=$this->perusahaanM->registerPerusahaan($data);
+      $return=$this->PerusahaanM->registerPerusahaan($data);
     }else{
-      $return=$this->perusahaanM->updatePerusahaan($data,$id);
+      $return=$this->PerusahaanM->updatePerusahaan($data,$id);
     }
 
-    $this->set_response($return);
+    $this->set_response($return,REST_Controller::HTTP_OK);
   }
   function perusahaan_get(){
     $id=$this->get('idperusahaan');
     if (empty($id)) {
-      $return=$this->perusahaanM->getListPerusahaan();
+      $return=$this->PerusahaanM->getListPerusahaan();
     }else{
-      $return=$this->perusahaanM->getPerusahaan($id);
+      $return=$this->PerusahaanM->getPerusahaan($id);
     }
-    $this->set_response($return);
+    $this->set_response($return,REST_Controller::HTTP_OK);
   }
   function perusahaan_delete(){
     $data['id']=$this->post('id');
-    $this->set_response($data);
+    $this->set_response($data,REST_Controller::HTTP_OK);
   }
 }
 
