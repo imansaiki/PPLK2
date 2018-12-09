@@ -39,8 +39,10 @@ class lowongan extends REST_Controller
       $data['tgl_update']= date('Y-m-d H:i:s');
       $return=$this->LowonganM->updateLowongan($data,$id);
     }
+    if($return==TRUE){
+        $this->set_response($return,REST_Controller::HTTP_OK);
+    }
 
-    $this->set_response($return,REST_Controller::HTTP_OK);
   }
   function lowongan_get(){
     $id=$this->get('idloker');
@@ -49,7 +51,9 @@ class lowongan extends REST_Controller
     }else{
       $return=$this->LowonganM->getLowongan($id);
     }
-    $this->set_response($return,REST_Controller::HTTP_OK);
+    if($return==TRUE){
+        $this->set_response($return,REST_Controller::HTTP_OK);
+    }
   }
 
 }

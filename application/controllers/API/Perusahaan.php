@@ -15,7 +15,7 @@ class perusahaan extends REST_Controller
   function perusahaan_post(){
     $data = array(
                    'nama' => $this->post('nama'),
-                   'password' => $this->post('password'),
+                   'password' => password_hash($this->post('password'),PASSWORD_DEFAULT),
                    'nama_pemilik' => $this->post('nama_pemilik'),
                    'alamat' => $this->post('alamat'),
                    'kota' => $this->post('kota'),
@@ -31,8 +31,9 @@ class perusahaan extends REST_Controller
     }else{
       $return=$this->PerusahaanM->updatePerusahaan($data,$id);
     }
-
-    $this->set_response($return,REST_Controller::HTTP_OK);
+    if($return==TRUE){
+        $this->set_response($return,REST_Controller::HTTP_OK);
+    }
   }
   function perusahaan_get(){
     $id=$this->get('idperusahaan');
@@ -41,7 +42,9 @@ class perusahaan extends REST_Controller
     }else{
       $return=$this->PerusahaanM->getPerusahaan($id);
     }
-    $this->set_response($return,REST_Controller::HTTP_OK);
+    if ($return==TRUE){
+      $this->set_response($return,REST_Controller::HTTP_OK);
+    }
   }
   function perusahaan_delete(){
     $data['id']=$this->post('id');

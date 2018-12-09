@@ -7,13 +7,19 @@ class LowonganM extends CI_Model
   function registerLowongan($data)
   {
     $this->db->flush_cache();
-    $this->db->insert('loker',$data);
+    if (!$this->db->update('loker',$data)) {
+      $query=$this->db->error();
+      return $query;
+    }
   }
   function updateLowongan($data,$id)
   {
     $this->db->flush_cache();
     $this->db->where('idloker',$id);
-    $this->db->update('loker',$data);
+    if (!$this->db->update('loker',$data)) {
+      $query=$this->db->error();
+      return $query;
+    }
   }
   function getLowongan($id)
   {

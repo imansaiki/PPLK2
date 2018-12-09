@@ -7,13 +7,19 @@ class PerusahaanM extends CI_Model
   function registerPerusahaan($data)
   {
     $this->db->flush_cache();
-    $this->db->insert('perusahaan',$data);
+    if (!$this->db->insert('perusahaan',$data)) {
+      $query=$this->db->error();
+      return $query;
+    }
   }
   function updatePerusahaan($data,$id)
   {
     $this->db->flush_cache();
     $this->db->where('idperusahaan',$id);
-    $this->db->update('perusahaan',$data);
+    if (!$this->db->update('perusahaan',$data)) {
+      $query=$this->db->error();
+      return $query;
+    }
   }
   function getPerusahaan($idperusahaan)
   {
