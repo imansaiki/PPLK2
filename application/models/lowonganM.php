@@ -30,8 +30,10 @@ class LowonganM extends CI_Model
   }
   function getListLowongan(){
     $this->db->flush_cache();
-    $this->db->select('idloker,nama,idperusahaan');
-    $query=$this->db->get('loker');
+    $this->db->select('loker.idloker,loker.nama,loker.idperusahaan,perusahaan.nama as namaperusahaan,loker.tipe,loker.gaji_min,loker.gaji_max');
+    $this->db->from('loker');
+    $this->db->join('perusahaan', 'perusahaan.idperusahaan = loker.idperusahaan');
+    $query=$this->db->get();
     return $query->result_array();
   }
 }

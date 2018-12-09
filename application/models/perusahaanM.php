@@ -31,7 +31,6 @@ class PerusahaanM extends CI_Model
   }
   function getListPerusahaan(){
     $this->db->flush_cache();
-    $this->db->select('idperusahaan,nama');
     $query=$this->db->get('perusahaan');
     return $query->result_array();
   }
