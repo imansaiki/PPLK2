@@ -25,6 +25,7 @@ class PerusahaanM extends CI_Model
   {
     // code...
     $this->db->flush_cache();
+    $this->db->select('idperusahaan,nama,kota');
     $this->db->where('idperusahaan',$idperusahaan);
     $query=$this->db->get('perusahaan');
     return $query->result_array();
