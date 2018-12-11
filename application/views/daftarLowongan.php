@@ -7,7 +7,7 @@
       </div>
       <div class="row">
         <?php foreach ($list as $key => $value): ?>
-          <a href="index/<?php echo $value['idloker'] ?>">
+          <a href="lowongan/index/<?php echo $value['idloker'] ?>">
             <div class="col l12">
               <div class="card-panel hoverable">
                 <div class="row">
