@@ -24,7 +24,7 @@ class LowonganM extends CI_Model
   function getLowongan($id)
   {
     $this->db->flush_cache();
-    $this->db->select('loker.idloker,loker.nama,loker.idperusahaan,perusahaan.nama as namaperusahaan,loker.tipe,loker.gaji_min,loker.gaji_max,loker.deskripsi_loker,loker.nama_cp,loker.email_cp,loker.no_telp_cp,loker.tgl_expired,tingkat_pendidikan.keterangan as pendidikan,bidang_pekerjaan.nama as bidang,perusahaan.kota,perusahaan.alamat');
+    $this->db->select('loker.idloker,loker.usia_min,loker.usia_max,loker.nama,loker.idperusahaan,perusahaan.nama as namaperusahaan,loker.tipe,loker.gaji_min,loker.gaji_max,loker.deskripsi_loker,loker.nama_cp,loker.email_cp,loker.no_telp_cp,loker.tgl_expired,tingkat_pendidikan.keterangan as pendidikan,bidang_pekerjaan.nama as bidang,perusahaan.kota,perusahaan.alamat');
     $this->db->where('idloker',$id);
     $this->db->from('loker');
     $this->db->join('perusahaan', 'perusahaan.idperusahaan = loker.idperusahaan');
